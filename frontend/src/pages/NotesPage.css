@@ -1,0 +1,382 @@
+.notes-container {
+  min-height: calc(100vh - 80px);
+  background-color: #f5f7fa;
+  padding: 2rem;
+}
+
+.notes-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  width: 100%;
+}
+
+.notes-form-section,
+.notes-list-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notes-form-section h2,
+.notes-list-section h2 {
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.notes-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.submit-btn,
+.cancel-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 44px;
+  touch-action: manipulation;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.cancel-btn {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+.cancel-btn:hover {
+  background-color: #bdc3c7;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.note-card {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.note-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+
+.note-card h3 {
+  color: #2c3e50;
+  margin: 0 0 0.75rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.note-content {
+  color: #555;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  max-height: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.note-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+.note-category {
+  background-color: #667eea;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.note-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-height: 36px;
+  min-width: 60px;
+  touch-action: manipulation;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #2980b9;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+}
+
+.loading,
+.no-notes {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 0.75rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border: 1px solid #f5c6cb;
+}
+
+/* Tablets and smaller laptops */
+@media (max-width: 1024px) {
+  .notes-content {
+    grid-template-columns: 1fr;
+  }
+
+  .notes-form-section h2,
+  .notes-list-section h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .notes-container {
+    padding: 1rem;
+    min-height: calc(100vh - 70px);
+  }
+
+  .notes-content {
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+
+  .notes-form-section,
+  .notes-list-section {
+    padding: 1.5rem;
+    border-radius: 6px;
+  }
+
+  .notes-form-section h2,
+  .notes-list-section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .note-card {
+    padding: 1.25rem;
+  }
+
+  .note-actions {
+    gap: 0.75rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .form-buttons {
+    gap: 0.75rem;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 480px) {
+  .notes-container {
+    padding: 0.75rem;
+  }
+
+  .notes-content {
+    gap: 0.75rem;
+  }
+
+  .notes-form-section,
+  .notes-list-section {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .notes-form-section h2,
+  .notes-list-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+
+  .notes-form {
+    gap: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.75rem;
+    font-size: 16px;
+  }
+
+  .form-buttons {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+    min-height: 48px;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .note-card {
+    padding: 1rem;
+    border-radius: 6px;
+  }
+
+  .note-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .note-content {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.75rem;
+  }
+
+  .note-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .note-actions {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .edit-btn,
+  .delete-btn {
+    flex: 1;
+    padding: 0.75rem;
+    font-size: 0.9rem;
+    min-height: 44px;
+  }
+
+  .error-message {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 360px) {
+  .notes-container {
+    padding: 0.5rem;
+  }
+
+  .notes-form-section,
+  .notes-list-section {
+    padding: 0.75rem;
+  }
+
+  .notes-form-section h2,
+  .notes-list-section h2 {
+    font-size: 1rem;
+  }
+
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    padding: 0.625rem;
+  }
+
+  .note-category {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
