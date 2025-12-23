@@ -8,7 +8,26 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+// Allow frontend origins (Render backend + Vercel frontend)
+const allowedOrigins = [
+  'https://tech-mecha-task.vercel.app',
+  'https://tech-mecha-task.onrender.com',
+  'http://localhost:3000',
+  'http://localhost:3001',
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (mobile apps, curl, Postman)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error('Not allowed by CORS'));
+    },
+    credentials: true,
+  })
+);
 
 // MongoDB Connection
 const connectDB = async () => {
