@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../apiClient';
 import './AuthPages.css';
 
 function RegisterPage() {
@@ -33,7 +33,7 @@ function RegisterPage() {
       localStorage.removeItem('userId');
 
       // Register user
-      await axios.post('/api/auth/register', formData);
+      await api.post('/api/auth/register', formData);
 
       // After successful registration, send user to login
       navigate('/login');

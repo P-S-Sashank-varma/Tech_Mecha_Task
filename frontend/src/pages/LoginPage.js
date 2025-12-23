@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
+import api from '../apiClient';
 import './AuthPages.css';
 
 function LoginPage() {
@@ -26,7 +26,7 @@ function LoginPage() {
     setLoading(true);
 
     try {
-      const response = await axios.post('/api/auth/login', formData);
+      const response = await api.post('/api/auth/login', formData);
       const { token, user } = response.data;
 
       // Store token and user info in localStorage

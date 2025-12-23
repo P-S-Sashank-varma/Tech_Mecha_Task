@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../apiClient';
 import './NotesPage.css';
 
 function NotesPage() {
@@ -27,7 +27,7 @@ function NotesPage() {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      const response = await axios.get('/api/notes', apiConfig);
+      const response = await api.get('/api/notes', apiConfig);
       setNotes(response.data.notes);
       setError('');
     } catch (err) {
@@ -52,10 +52,10 @@ function NotesPage() {
 
     try {
       if (editingId) {
-        await axios.put(`/api/notes/${editingId}`, formData, apiConfig);
+        await api.put(`/api/notes/${editingId}`, formData, apiConfig);
         setEditingId(null);
       } else {
-        await axios.post('/api/notes', formData, apiConfig);
+        await api.post('/api/notes', formData, apiConfig);
       }
 
       setFormData({ title: '', content: '', category: 'other' });
@@ -77,7 +77,7 @@ function NotesPage() {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this note?')) {
       try {
-        await axios.delete(`/api/notes/${id}`, apiConfig);
+        await api.delete(`/api/notes/${id}`, apiConfig);
         await fetchNotes();
       } catch (err) {
         setError('Failed to delete note');
